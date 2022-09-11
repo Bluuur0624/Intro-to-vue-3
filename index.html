@@ -10,8 +10,20 @@
   </head>
   <body>
     <div id="app">
-      <h1>{{ product }}</h1>
-      <p>I love {{ product }}, they are {{ description }}</p>
+      <div class="nav-bar"></div>
+
+      <div class="product-display">
+        <div class="product-container">
+          <div class="product-image">
+            <!-- Image gose here -->
+            <img v-bind:src="image">
+          </div>
+          <div class="product-info">
+            <h1>{{ product }}</h1>
+            <a v-bind:href="url">Wavu Wiki here :)</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Import App -->
