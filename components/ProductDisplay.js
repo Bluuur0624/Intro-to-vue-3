@@ -1,5 +1,9 @@
 app.component('product-display', {
   props:{
+    cart:{
+      type: Array,
+      required: true
+    },
     premium: {
       type: Boolean,
       required: true
@@ -46,9 +50,9 @@ app.component('product-display', {
 
         <button 
           class="button" 
-          :class="{disabledButton: cart <= 0}"
+          :class="{disabledButton: cart.length <= 0}"
           @click="removeFromCart"
-          :disabled="cart <= 0">
+          :disabled="cart.length <= 0">
           Remove from Cart
         </button>
       </div>
@@ -76,10 +80,10 @@ app.component('product-display', {
 },
 methods:{
     addToCart(){
-        this.cart += 1
+        this.$emit('add-to-cart', this.variants[this.selectedVariant].id)
     },
     removeFromCart(){
-        this.cart -= 1
+        this.$emit('remove-from-cart')
     },
     updateVariant(index){
         this.selectedVariant = index
