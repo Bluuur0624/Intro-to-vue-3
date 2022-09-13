@@ -1,12 +1,12 @@
 const app = Vue.createApp({
-    data: function(){
+    data(){
         return{
             cart: 0,
             product: 'Socks',
             image:'./assets/images/socks_green.jpg',
             description: 'warm, comfy, feel like home',
             url: 'https://wavu.wiki/t/Main_Page',
-            inventory: 100,
+            inStock: false,
             onSale: true,
             details:['50% cotton','30% wool','20% polyester'],
             variants:[
