@@ -14,60 +14,17 @@
 
       <div class="cart">Cart: {{ cart }}</div>
 
-      <div class="product-display">
-        <div class="product-container">
-          <div class="product-image">
-            <!-- Image gose here -->
-            <img v-bind:src="image" :class="{'out-of-stock-img': !inStock}">
-          </div>
-          <div class="product-info">
-            <h1>{{ saleTitle }}</h1>
+      <product-display :premium="premium"></product-display>
 
-            <p v-if="inStock">In Stock</p>
-            <p v-else>Out of Stock</p>
-            <p v-if="onSale">On sale</p>
-            <ul>
-              <li v-for="detail in details">{{detail}}</li>
-            </ul>
-            <div 
-              v-for="(variant, index) in variants" 
-              :key="variant.id" 
-              @mouseover="updateVariant(index)"
-              class="color-circle"
-              :style="{ backgroundColor: variant.color }">
-              <!-- {{variant.color}} -->
-            </div>
-            <div>
-              <p>Sizes:</p>
-              <div v-for="size in sizes">{{size}}</div>
-            </div>
-            <a v-bind:href="url">Wavu Wiki here :)</a>
+      <product-details :details="details"></product-details>
 
-          <div>
-            <button 
-              class="button" 
-              :class="{disabledButton: !inStock}"
-              @click="addToCart"
-              :disabled="!inStock">
-              Add to Cart
-            </button>
-
-            <button 
-              class="button" 
-              :class="{disabledButton: cart <= 0}"
-              @click="removeFromCart"
-              :disabled="cart <= 0">
-              Remove from Cart
-            </button>
-          </div>
-            
-          </div>
-        </div>
-      </div>
     </div>
-
     <!-- Import App -->
     <script src="./main.js"></script>
+
+    <!-- Import Component -->
+    <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ProductDetails.js"></script>
 
     <!-- Mount App -->
     <script>
